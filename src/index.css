@@ -86,3 +86,28 @@ button:disabled {
 button:disabled:hover {
     filter: brightness(100%);
 }
+
+@media (max-width: 650px) {
+
+    #poke-container {
+        width: 100%;
+        padding: 15px;
+    }
+
+    #poke-container > div {
+        font-size: 16px;
+    }
+
+    #poke-container h2 {
+        text-align: left;
+    }
+    
+    #poke-container > div p {
+        font-size: 16px;
+        text-align: left;
+    }
+
+    button {
+        font-size: 16px;
+    }
+}

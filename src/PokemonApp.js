@@ -53,7 +53,7 @@ export const PokemonApp = () => {
                         )
                 }
             </div>
-
+            
             <button 
                 onClick={() => setPokeNum(pokeNum - 5)}
                 disabled={(pokeNum === 0) ? true : false}
