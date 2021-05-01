@@ -3,11 +3,12 @@ import { pokemonApi } from './helpers/pokemonApi';
 
 export const PokemonApp = () => {
 
-    const [pokeList, setPokeList] = useState();
     const [pokeNum, setPokeNum] = useState(0)
+    const [pokeList, setPokeList] = useState([]);
 
 
     useEffect(() => {
+        
         pokemonApi()
                 .then(data => {
                    return data.map(({id, name, pokeImg}) => {
@@ -19,29 +20,18 @@ export const PokemonApp = () => {
                     })
                 })
                 .then((data) => setPokeList(() => (data)))            
+                
     }, [setPokeList])
      
-
-    useEffect(() => {
-        if (pokeList !== undefined) {
-            setPokeList(prevList => prevList.splice(pokeNum, 5))
-        }
-        
-    }, [pokeList])
-
-
     return (
         <div>
             <h1>Pokedex</h1>
             <hr />
 
-            <div>
+            <div id="poke-container">
                 {
-                     (pokeList !== undefined) 
-                        &&
-                        pokeList.map(pokemon => {
+                        pokeList.splice(pokeNum, 5).map(pokemon => (
                             
-                            return (
                                 <div key={pokemon.id}>
                                 <p id="poke-id">{pokemon.id}</p>
                                 <p id="poke-name">{pokemon.name}</p>
@@ -53,10 +43,25 @@ export const PokemonApp = () => {
                                     <small>{`Couldn't find an image for this pokemon :(`}</small> 
                                 }
                             </div>
+                            
                             )
-                        })
+                        )
                 }
             </div>
+
+            <button 
+                onClick={() => setPokeNum(pokeNum - 5)}
+                disabled={(pokeNum === 0) ? true : false}
+            >
+                Go back
+            </button>
+
+            <button 
+                onClick={() => setPokeNum(pokeNum + 5)}
+                disabled={(pokeNum === 1113) ? true : false}
+            >
+                Load more
+            </button>
 
         </div>
         )
