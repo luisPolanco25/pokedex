@@ -1,15 +1,22 @@
 * {
     margin: 0px;
     padding: 0px;
-    overflow: hidden;
+    box-sizing: border-box;
 }
 
 html {
-    font-family:sans-serif;
+    font-family: sans-serif;
+    color: #333;
 }
 
 body {
     padding: 1%;
+}
+
+h1 {
+    font-size: 40px;
+    margin-top: 25px;
+    margin-bottom: 25px;
 }
 
 #poke-container {
@@ -18,6 +25,7 @@ body {
     height: 600px;
     display: flex;
     flex-direction: column;
+    margin-top: 30px;
 }
 
 #poke-container > div {
@@ -25,6 +33,17 @@ body {
     align-items: center;
     justify-content: space-between;
     border-bottom: 1px solid #ccc;
+    font-size: 18px;
+}
+
+#poke-container h2 {
+    text-align: center;
+    flex-basis: 100%;
+    margin-bottom: 10px;
+}
+
+#poke-container h2:last-child {
+    flex-basis: 45%;
 }
 
 #poke-container > div p {
@@ -40,4 +59,30 @@ body {
 
 #poke-container img {
     flex-basis: 45%;
+}
+
+button {
+    background-color: darkcyan;
+    color: white;
+    cursor: pointer;
+    border: none;
+    padding: 10px;
+    font-size: 18px;
+    border-radius: 5px;
+    margin-right: 15px;
+    outline: none;
+}
+
+button:hover {
+    filter: brightness(95%);
+}
+
+button:disabled {
+    background-color: gray;
+    opacity: 0.9;
+    cursor: default;
+}
+
+button:disabled:hover {
+    filter: brightness(100%);
 }

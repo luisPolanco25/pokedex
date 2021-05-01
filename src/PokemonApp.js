@@ -23,19 +23,17 @@ export const PokemonApp = () => {
                 
     }, [setPokeList])
 
-    console.log(pokeNum);
-     
     return (
         <div>
             <h1>Pokedex</h1>
             <hr />
 
             <div id="poke-container">
-                {/* <div>
-                    <p>ID</p>
-                    <p>Name</p>
-                    <p>Image</p>
-                </div> */}
+                <div>
+                    <h2>ID</h2>
+                    <h2>Name</h2>
+                    <h2>Image</h2>
+                </div>
                 {
                         pokeList.slice(pokeNum, (pokeNum + 5)).map(pokemon => (
                             
@@ -65,7 +63,7 @@ export const PokemonApp = () => {
 
             <button 
                 onClick={() => setPokeNum(pokeNum + 5)}
-                disabled={(pokeNum === 1113) ? true : false}
+                disabled={(pokeNum >= 1115) ? true : false}
             >
                 Load more...
             </button>
