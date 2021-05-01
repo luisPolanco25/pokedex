@@ -1,4 +1,43 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden;
+}
+
+html {
+    font-family:sans-serif;
+}
+
+body {
+    padding: 1%;
+}
+
 #poke-container {
-    width: 750px;
-    height: 800px;
+    padding: 30px;
+    width: 600px;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+}
+
+#poke-container > div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #ccc;
+}
+
+#poke-container > div p {
+    text-align: center;
+    text-transform: capitalize;
+    font-size: 18px;
+    flex-basis: 100%;
+}
+
+#poke-id {
+    font-weight: bold;
+}
+
+#poke-container img {
+    flex-basis: 45%;
 }

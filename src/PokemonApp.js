@@ -22,6 +22,8 @@ export const PokemonApp = () => {
                 .then((data) => setPokeList(() => (data)))            
                 
     }, [setPokeList])
+
+    console.log(pokeNum);
      
     return (
         <div>
@@ -29,10 +31,15 @@ export const PokemonApp = () => {
             <hr />
 
             <div id="poke-container">
+                {/* <div>
+                    <p>ID</p>
+                    <p>Name</p>
+                    <p>Image</p>
+                </div> */}
                 {
-                        pokeList.splice(pokeNum, 5).map(pokemon => (
+                        pokeList.slice(pokeNum, (pokeNum + 5)).map(pokemon => (
                             
-                                <div key={pokemon.id}>
+                                <div className="animate__animated animate__bounceInUp" key={pokemon.id}>
                                 <p id="poke-id">{pokemon.id}</p>
                                 <p id="poke-name">{pokemon.name}</p>
                                 {
@@ -60,7 +67,7 @@ export const PokemonApp = () => {
                 onClick={() => setPokeNum(pokeNum + 5)}
                 disabled={(pokeNum === 1113) ? true : false}
             >
-                Load more
+                Load more...
             </button>
 
         </div>
