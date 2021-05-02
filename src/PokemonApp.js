@@ -5,7 +5,7 @@ export const PokemonApp = () => {
 
     const [pokeNum, setPokeNum] = useState(0)
     const [pokeList, setPokeList] = useState([]);
-
+    const [searchedPokemon, setSearchedPokemon] = useState('');
 
     useEffect(() => {
         
@@ -23,10 +23,26 @@ export const PokemonApp = () => {
                 
     }, [setPokeList])
 
+    const handleInputSearch = ({target}) => {
+        setPokeNum(0);
+        setSearchedPokemon(() => target.value);
+    }
+
+    const filteredPokeList = [...pokeList].filter(pokemon => pokemon.name.toLowerCase().includes(searchedPokemon.toLowerCase()));
+
     return (
         <div>
             <h1>Pokedex</h1>
             <hr />
+
+            <input 
+                type="text"
+                name="search"
+                autoComplete="off"
+                value={searchedPokemon}
+                placeholder="Search a pokemon"
+                onChange={handleInputSearch}
+            />
 
             <div id="poke-container">
                 <div>
@@ -34,9 +50,29 @@ export const PokemonApp = () => {
                     <h2>Name</h2>
                     <h2>Image</h2>
                 </div>
+
                 {
-                        pokeList.slice(pokeNum, (pokeNum + 5)).map(pokemon => (
-                            
+                    (searchedPokemon.length === 0)
+                        ?
+                            pokeList.slice(pokeNum, (pokeNum + 5)).map(pokemon => (
+                                
+                                    <div className="animate__animated animate__bounceInUp" key={pokemon.id}>
+                                    <p id="poke-id">{pokemon.id}</p>
+                                    <p id="poke-name">{pokemon.name}</p>
+                                    {
+                                        (pokemon.pokeImg)
+                                        ?
+                                        <img src={pokemon.pokeImg} alt={pokemon.name} />
+                                        : 
+                                        <small>{`Couldn't find an image for this pokemon :(`}</small> 
+                                    }
+                                </div>
+                                
+                                )
+                            )
+                        :
+                            filteredPokeList.slice(pokeNum, (pokeNum + 5)).map(pokemon => (
+                                    
                                 <div className="animate__animated animate__bounceInUp" key={pokemon.id}>
                                 <p id="poke-id">{pokemon.id}</p>
                                 <p id="poke-name">{pokemon.name}</p>
@@ -52,8 +88,9 @@ export const PokemonApp = () => {
                             )
                         )
                 }
+
             </div>
-            
+            <div>
             <button 
                 onClick={() => setPokeNum(pokeNum - 5)}
                 disabled={(pokeNum === 0) ? true : false}
@@ -63,10 +100,11 @@ export const PokemonApp = () => {
 
             <button 
                 onClick={() => setPokeNum(pokeNum + 5)}
-                disabled={(pokeNum >= 1115) ? true : false}
+                disabled={(pokeNum >= filteredPokeList.length - 5 || pokeNum >= 1118) ? true : false}
             >
                 Load more...
             </button>
+            </div>
 
         </div>
         )
