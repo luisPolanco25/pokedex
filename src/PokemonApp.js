@@ -35,14 +35,32 @@ export const PokemonApp = () => {
             <h1>Pokedex</h1>
             <hr />
 
-            <input 
-                type="text"
-                name="search"
-                autoComplete="off"
-                value={searchedPokemon}
-                placeholder="Search a pokemon"
-                onChange={handleInputSearch}
-            />
+            <div id="list-changers">
+                <div>
+                <button 
+                    onClick={() => setPokeNum(pokeNum - 5)}
+                    disabled={(pokeNum === 0) ? true : false}
+                >
+                    Go back
+                </button>
+
+                <button 
+                    onClick={() => setPokeNum(pokeNum + 5)}
+                    disabled={(pokeNum >= filteredPokeList.length - 5 || pokeNum >= 1118) ? true : false}
+                >
+                    Load more...
+                </button>
+                </div>
+
+                <input 
+                    type="text"
+                    name="search"
+                    autoComplete="off"
+                    value={searchedPokemon}
+                    placeholder="Search a pokemon"
+                    onChange={handleInputSearch}
+                />
+            </div>
 
             <div id="poke-container">
                 <div>
@@ -89,21 +107,6 @@ export const PokemonApp = () => {
                         )
                 }
 
-            </div>
-            <div>
-            <button 
-                onClick={() => setPokeNum(pokeNum - 5)}
-                disabled={(pokeNum === 0) ? true : false}
-            >
-                Go back
-            </button>
-
-            <button 
-                onClick={() => setPokeNum(pokeNum + 5)}
-                disabled={(pokeNum >= filteredPokeList.length - 5 || pokeNum >= 1118) ? true : false}
-            >
-                Load more...
-            </button>
             </div>
 
         </div>
