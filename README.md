@@ -7,3 +7,7 @@ This project was created with `create-react-app` and it fetches data from <a tar
 ## Live preview 
 
  https://luispolanco25.github.io/pokedex/
+
+ ### More info about the project
+
+This project doesn't have a lot of details <i>(For example, when you type a pokemon that doesn't exist in the search bar, it doesn't throw anything to inform the user that what he wrote couldn't be found)</i> because I just focused on fetching an API and use the fetched data to manipulate the information that is shown in my page.  
