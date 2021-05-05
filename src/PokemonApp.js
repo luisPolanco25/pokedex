@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { pokemonApi } from './helpers/pokemonApi';
-
+import {Loading} from './components/Loading';
+ 
 export const PokemonApp = () => {
 
     const [pokeNum, setPokeNum] = useState(0)
@@ -29,6 +30,7 @@ export const PokemonApp = () => {
     }
 
     const filteredPokeList = [...pokeList].filter(pokemon => pokemon.name.toLowerCase().includes(searchedPokemon.toLowerCase()));
+
 
     return (
         <div>
@@ -68,6 +70,11 @@ export const PokemonApp = () => {
                     <h2>Name</h2>
                     <h2>Image</h2>
                 </div>
+
+                {
+                    (pokeList.length === 0)
+                    && <Loading />
+                }
 
                 {
                     (searchedPokemon.length === 0)
