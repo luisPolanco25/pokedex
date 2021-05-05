@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { pokemonApi } from './helpers/pokemonApi';
-import {Loading} from './components/Loading';
+import {Loading} from './components/loading/Loading';
+import { ErrorMesagge } from './components/error/ErrorMesagge';
  
 export const PokemonApp = () => {
 
@@ -61,6 +62,7 @@ export const PokemonApp = () => {
                     value={searchedPokemon}
                     placeholder="Search a pokemon"
                     onChange={handleInputSearch}
+                    disabled={(pokeList.length === 0)}
                 />
             </div>
 
@@ -70,6 +72,11 @@ export const PokemonApp = () => {
                     <h2>Name</h2>
                     <h2>Image</h2>
                 </div>
+
+                {
+                    (searchedPokemon.length > 0 && filteredPokeList.length === 0) 
+                    && <ErrorMesagge pokemonName={searchedPokemon} />
+                }
 
                 {
                     (pokeList.length === 0)
@@ -91,7 +98,7 @@ export const PokemonApp = () => {
                                         : 
                                         <small>{`Couldn't find an image for this pokemon :(`}</small> 
                                     }
-                                </div>
+                                    </div>
                                 
                                 )
                             )
@@ -108,7 +115,7 @@ export const PokemonApp = () => {
                                     : 
                                     <small>{`Couldn't find an image for this pokemon :(`}</small> 
                                 }
-                            </div>
+                                </div>
                             
                             )
                         )
