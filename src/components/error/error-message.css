@@ -1,0 +1,16 @@
+#error-message {
+    background-color: #fce4e4;
+    border: 1px solid #fcc2c3;
+    padding: 20px 30px;
+    margin: 5vh 0 5vh 0;
+    border-radius: 5px;
+}
+
+#error-text {
+    color: #cc0033;
+    font-family: sans-serif, Arial, Helvetica;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 20px;
+    text-shadow: 1px 1px rgba(250,250,250,.3);
+}
